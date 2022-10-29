@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { SystemContextProps, User } from "../interfaces/user";
+import { v4 as uuid } from "uuid";
 const SystemContext = createContext<SystemContextProps>(
   {} as SystemContextProps
 );
@@ -20,7 +21,7 @@ export const SystemProvider = ({ children }: any) => {
     return currentData;
   };
   const postCurrentData = (data: User) => {
-    setCurrentData(data);
+    setCurrentData({ ...data, id: uuid() });
   };
   return (
     <SystemContext.Provider
