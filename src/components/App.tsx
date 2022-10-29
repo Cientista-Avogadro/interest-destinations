@@ -3,6 +3,8 @@ import {
   Box,
   Button,
   Container,
+  ListItemButton,
+  ListItemText,
   Paper,
   Step,
   StepLabel,
@@ -11,6 +13,7 @@ import {
   Typography,
 } from "@mui/material";
 import { FormEvent, useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import SystemContext from "../Context/SystemContext";
 import { useMultipleStepForm } from "../hook/useMultipleStepForm";
 import { ApiResponse, User } from "../interfaces/user";
@@ -62,7 +65,7 @@ export const App = () => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     handleNext();
-    postCurrentData(data);
+    if (activeStep === steps.length - 2) postCurrentData(data);
   };
 
   return (
@@ -76,10 +79,24 @@ export const App = () => {
           borderBottom: (t) => `1px solid ${t.palette.divider}`,
         }}
       >
-        <Toolbar>
-          <Typography variant="h6" color="inherit" noWrap>
-            Ally Hub
-          </Typography>
+        <Toolbar
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
+          <Link to="/">
+            <Typography variant="h6" color="inherit" noWrap>
+              Ally Hub
+            </Typography>
+          </Link>
+
+          <Link
+            to="/interest"
+            className="p-4 bg-gray-200 hover:bg-gray-300 transition-colors"
+          >
+            Historico Marcações
+          </Link>
         </Toolbar>
       </AppBar>
 

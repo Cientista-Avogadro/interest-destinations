@@ -9,7 +9,7 @@ export interface User {
   email: string;
   country: ApiResponse[];
   city: ApiResponseCity[];
-  createdAt: Date;
+  createdAt: Date | string;
 }
 
 export interface ApiResponse {
@@ -36,4 +36,6 @@ export interface SystemContextProps {
   getCurrentData: () => User;
   postCurrentData(data: User): void;
   INITIAL_DATA: User;
+  getInterestList: () => User[];
+  deleteInterestList: (id: string) => void;
 }
