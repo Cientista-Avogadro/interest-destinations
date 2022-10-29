@@ -1,3 +1,11 @@
+import {
+  FormControl,
+  FormHelperText,
+  Input,
+  InputLabel,
+  TextField,
+  useFormControl,
+} from "@mui/material";
 import { User } from "../interfaces/user";
 import { FormWrapper } from "./FormWrapper";
 
@@ -20,47 +28,62 @@ export const UserForm = ({
 }: UserProps) => {
   return (
     <FormWrapper title="Dados Pessoais">
-      <label htmlFor="firstName">Primeiro Nome</label>
-      <input
-        type="text"
+      <TextField
+        name="firstName"
+        label="Primeiro Nome"
         required
         autoFocus
-        name="firstName"
+        variant="outlined"
+        id="firstName"
         value={firstName}
         onChange={(e) => updatedFields({ firstName: e.target.value })}
+        aria-describedby="firstName"
+        /*    helperText={required ? "preencha este campo" : "campo preenchidpo"}
+        error={required} */
       />
-      <label htmlFor="lastName">Último Nome</label>
-      <input
-        type="text"
-        required
+      <TextField
+        id="lastName"
         name="lastName"
+        label="Último Nome"
+        required
+        variant="outlined"
         value={lastName}
         onChange={(e) => updatedFields({ lastName: e.target.value })}
+        aria-describedby="lastName"
       />
-
-      <label htmlFor="email">Email</label>
-      <input
-        type="text"
-        required
+      <TextField
+        id="email"
         name="email"
+        label="Email"
+        type={"email"}
+        required
+        variant="outlined"
         value={email}
         onChange={(e) => updatedFields({ email: e.target.value })}
+        aria-describedby="email"
       />
-      <label htmlFor="phoneNumber">Telefone</label>
-      <input
-        type="text"
-        required
-        name="phoneNumber"
-        value={phoneNumber}
-        onChange={(e) => updatedFields({ phoneNumber: e.target.value })}
-      />
-      <label htmlFor="cpf">CPF</label>
-      <input
-        type="text"
-        required
+
+      <TextField
+        id="cpf"
         name="cpf"
+        label="CPF"
+        required
+        variant="outlined"
         value={cpf}
         onChange={(e) => updatedFields({ cpf: e.target.value })}
+        aria-describedby="cpf"
+      />
+
+      <TextField
+        id="phoneNumber"
+        name="phoneNumber"
+        type="tel"
+        label="Telefone"
+        required
+        variant="outlined"
+        value={phoneNumber}
+        onChange={(e) => updatedFields({ phoneNumber: e.target.value })}
+        aria-describedby="phoneNumber"
       />
     </FormWrapper>
   );

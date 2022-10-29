@@ -1,3 +1,4 @@
+import { Typography } from "@mui/material";
 import { ReactNode } from "react";
 
 interface FormWrapperProps {
@@ -8,21 +9,16 @@ interface FormWrapperProps {
 export const FormWrapper = ({ title, children }: FormWrapperProps) => {
   return (
     <>
-      <h2
-        style={{
-          textAlign: "center",
-          margin: 0,
-          marginBottom: "2rem",
-        }}
-      >
+      <Typography variant="h6" gutterBottom>
         {title}
-      </h2>
+      </Typography>
       <div
         style={{
           display: "grid",
           gap: "1rem .5rem",
-          justifyContent: "flex-start",
-          gridTemplateColumns: "auto minmax(auto, 400px)",
+          justifyContent: "normal",
+          gridTemplateColumns: "auto auto",
+          width: "100%",
         }}
       >
         {children}
